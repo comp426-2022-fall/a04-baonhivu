@@ -8,7 +8,7 @@ const app = express();
 app.use(express.urlencoded({extended: true}))
 const args = minimist(process.argv.slice(2));
 
-const port = args.port || 5000;
+let port = 5000;
 
 if ("port" in args) {
 	port = args.port;
