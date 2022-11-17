@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import express from "express";
 import minimist from "minimist"
 import { roll } from "./lib/roll.js"
@@ -25,8 +23,8 @@ app.get('/app/roll/', (req, res) => {
 app.post('/app/roll/', (req,res) => {
 	let sides = parseInt(req.body.sides);
 	let dice = parseInt(req.body.dice);
-	let roll = parseInt(req.body.roll);
-	res.send(roll(sides,dice,roll));
+	let rolls = parseInt(req.body.rolls);
+	res.send(roll(sides,dice,rolls));
 });
 
 app.get('/app/roll/:sides/', (req, res) => {
@@ -40,11 +38,11 @@ app.get('/app/roll/:sides/:dice/', (req, res) => {
 	res.send(roll(sides,dice,1));
 });
 
-app.get('/app/roll/:sides/:dice/:roll/', (req, res) => {
+app.get('/app/roll/:sides/:dice/:rolls/', (req, res) => {
 	let sides = parseInt(req.params.sides);
 	let dice = parseInt(req.params.dice);
-	let roll = parseInt(req.params.roll);
-	res.send(roll(sides,dice,roll));
+	let rolls = parseInt(req.params.rolls);
+	res.send(roll(sides,dice,rolls));
 });
 
 app.use(function(req, res) {
